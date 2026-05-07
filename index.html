@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daniel Sanmartín Nieto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;800&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #000;
+      --accent: rgb(237, 111, 92);
+      --bg: #F3E8D9;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--black);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 780px;
+      padding: 40px 24px;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 4rem);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin: 0 0 0.6rem;
+    }
+
+    .surname {
+      font-weight: 600;
+    }
+
+    .dot {
+      color: var(--accent);
+    }
+
+    .role {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 2.6rem; /* aumentato ancora */
+      margin: 0 0 1.8rem;
+      line-height: 1.15;
+    }
+
+    .skills {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.05em;
+      word-spacing: 1.2em;
+      text-transform: lowercase;
+    }
+
+    .project {
+      font-size: 1.2rem; /* stessa dimensione delle skills */
+      margin-bottom: 2.4rem;
+    }
+
+    .project a {
+      text-decoration: none;
+      color: var(--black);
+      transition: color 0.3s ease;
+    }
+
+    .project a:hover {
+      color: var(--accent);
+    }
+
+    .location {
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+      margin-bottom: 2.4rem;
+    }
+
+    .email {
+      display: inline-flex;
+      align-items: center;
+      font-size: 1.2rem;
+      text-decoration: none;
+      color: var(--black);
+      position: relative;
+      width: fit-content;
+    }
+
+    .email::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 1px;
+      background: var(--black);
+      transform: scaleX(0.4);
+      transform-origin: left;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .email:hover::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      fill: none;
+      margin-right: 8px;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      .role {
+        font-size: 2rem;
+      }
+
+      .skills,
+      .project {
+        font-size: 1rem;
+        word-spacing: 0.8em;
+      }
+
+      .location,
+      .email {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>
+    Daniel <span class="surname">Sanmartín Nieto</span><span class="dot">.</span>
+  </h1>
+
+  <p class="role">musician & musicologist</p>
+
+  <div class="skills">
+    organ harpsichord research editing
+  </div>
+
+  <div class="project">
+    <a href="https://orquestaclasica.com/es/proxectos/" target="_blank">
+      co-founder 8pés organ festival (Vigo, ES)
+    </a>
+  </div>
+
+  <div class="location">
+    <svg class="icon" viewBox="0 0 24 24">
+      <path d="M12 21s-6-5.4-6-10a6 6 0 1 1 12 0c0 4.6-6 10-6 10z"></path>
+      <circle cx="12" cy="11" r="2"></circle>
+    </svg>
+    Roma
+  </div>
+
+  <a class="email" id="emailLink">
+    <svg class="icon" viewBox="0 0 24 24">
+      <path d="M4 6h16v12H4z"></path>
+      <path d="M4 6l8 6 8-6"></path>
+    </svg>
+    <span id="emailText">loading...</span>
+  </a>
+</div>
+
+<script>
+  const user = "daniel";
+  const domain = "sanmartin.bio";
+  const email = user + "@" + domain;
+
+  const link = document.getElementById("emailLink");
+  const text = document.getElementById("emailText");
+
+  link.href = "mailto:" + email;
+  text.textContent = email;
+</script>
+
+</body>
+</html>
