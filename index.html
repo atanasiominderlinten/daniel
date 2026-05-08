@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Daniel Sanmartín Nieto | Musician & Musicologist</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <meta name="description" content="Daniel Sanmartín Nieto is a musician and musicologist specializing in organ, harpsichord, research and early music performance and editing. Based in Rome.">
+  <meta name="keywords" content="Daniel Sanmartín Nieto, musician, musicologist, organist, harpsichord, early music, music research, music editing, Rome">
+
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://sanmartin.bio/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Daniel Sanmartín Nieto | Musician & Musicologist">
+  <meta property="og:description" content="Musician and musicologist specialized in organ, harpsichord, research and early music. Based in Rome.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sanmartin.bio/">
+  <meta property="og:image" content="https://sanmartin.bio/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;800&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+
+  <!-- Structured Data (VERY IMPORTANT FOR GOOGLE) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Daniel Sanmartín Nieto",
+    "jobTitle": "Musician and Musicologist",
+    "url": "https://sanmartin.bio",
+    "sameAs": [],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "8pés Organ Festival"
+    },
+    "homeLocation": {
+      "@type": "Place",
+      "name": "Rome"
+    },
+    {
+    "@type": "Place",
+    "name": "Vigo",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Vigo",
+      "addressCountry": "ES"
+    },
+    "knowsAbout": [
+      "Organ",
+      "Harpsichord",
+      "Music research",
+      "Music editing",
+      "Early music"
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --black: #000;
+      --accent: rgb(237, 111, 92);
+      --bg: #FFFFFF;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--black);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main.container {
+      max-width: 780px;
+      padding: 40px 24px;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 4rem);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin: 0 0 0.6rem;
+    }
+
+    .surname { font-weight: 600; }
+    .dot { color: var(--accent); }
+
+    .role {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 2.6rem;
+      margin: 0 0 1.8rem;
+    }
+
+    .skills {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.07em;
+      word-spacing: 1.2em;
+      text-transform: lowercase;
+    }
+
+    .project, .location, .email {
+      font-size: 1.2rem;
+      margin-bottom: 2.4rem;
+    }
+
+    a {
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    a:hover { color: var(--accent); }
+
+    .location {
+      display: flex;
+      align-items: center;
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      fill: none;
+      margin-right: 8px;
+    }
+
+    .email {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .email::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 1px;
+      background: var(--black);
+      transform: scaleX(0.4);
+      transform-origin: left;
+      transition: 0.3s ease;
+    }
+
+    .email:hover::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2.4rem; }
+      .role { font-size: 2rem; }
+      .skills, .project { font-size: 1rem; }
+      .location, .email { font-size: 1.05rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<main class="container">
+
+  <header>
+    <h1>
+      Daniel <span class="surname">Sanmartín Nieto</span><span class="dot">.</span>
+    </h1>
+
+    <p class="role">musician & musicologist</p>
+  </header>
+
+  <section class="skills" aria-label="Skills">
+    organ harpsichord research editing
+  </section>
+
+  <section class="project">
+    <a href="https://orquestaclasica.com/es/proxectos/" target="_blank" rel="noopener">
+      co-founder 8pés organ festival
+    </a>
+&ensp; &ensp;
+    <a href="https://www.dosacordes.es/web/" target="_blank" rel="noopener">
+      executive editor at dos acordes
+    </a>
+  </section>
+
+  <section class="location" aria-label="Location">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 21s-6-5.4-6-10a6 6 0 1 1 12 0c0 4.6-6 10-6 10z"></path>
+      <circle cx="12" cy="11" r="2"></circle>
+    </svg>
+    Roma
+  </section>
+
+  <section>
+    <a class="email" id="emailLink" aria-label="Send email">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 6h16v12H4z"></path>
+        <path d="M4 6l8 6 8-6"></path>
+      </svg>
+      <span id="emailText">loading...</span>
+    </a>
+  </section>
+
+</main>
+
+<script>
+  const user = "daniel";
+  const domain = "sanmartin.bio";
+  const email = `${user}@${domain}`;
+
+  const link = document.getElementById("emailLink");
+  const text = document.getElementById("emailText");
+
+  link.href = "mailto:" + email;
+  text.textContent = email;
+</script>
+
+</body>
+</html>
