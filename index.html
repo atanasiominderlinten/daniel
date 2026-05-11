@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Daniel Sanmartín Nieto | Musician & Musicologist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-light: #E2E2E2;
+      --color-light: #1C1C1C;
+      --color-muted-light: #878787;
+      --bg-dark: #181818;
+      --color-dark: #E2E1E1;
+      --color-muted-dark: #878787;
+      --accent: #ED6F5C;
+    }
+
+    html, body { 
+      overflow-x: hidden; 
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: "Inter", sans-serif; }
+
+    /* ── SECCIÓN 1: PRESENTACIÓN ── */
+    .hero-section {
+      background-color: var(--bg-light);
+      color: var(--color-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
+      padding: 0 24px;
+      box-sizing: border-box;
+    }
+    .container-index { max-width: 850px; width: 100%; }
+
+    h1 { 
+      font-size: clamp(3.0rem, 6vw, 3.8rem); 
+      font-weight: 400; 
+      letter-spacing: -0.04em; 
+      margin: 0 0 0.2rem; /* Reducido de 0.8rem para acercar el subtítulo */
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .firstname, .surname, .lastname { font-weight: 400; margin-right: 0.25em; }
+    .surname, .lastname { font-weight: 600; }
+    .lastname { margin-right: 0; }
+    .dot { color: var(--accent); }
+
+    .role { 
+      font-family: "Playfair Display", serif; 
+      font-style: italic; 
+      font-size: clamp(1.4rem, 3.2vw, 2rem); 
+      color: var(--color-muted-light); 
+      margin: 0 0 0.8rem; 
+    }
+
+    .skills { 
+      font-size: 1.25rem; 
+      margin-bottom: 2.2rem; 
+      letter-spacing: 0.07em; 
+      text-transform: lowercase;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 1.2em;
+    }
+    .skill-pair { white-space: nowrap; word-spacing: 1.2em; }
+    
+    .project { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 2rem; line-height: 1.2; }
+    .project a, .email-section a { 
+      text-decoration: none; 
+      border-bottom: 1px solid var(--accent); 
+      transition: all 0.2s; 
+      color: var(--color-muted-light);
+      display: inline;
+      width: fit-content;
+    }
+    .email-section a { color: var(--color-light); display: inline-flex; align-items: center; }
+    .project a:hover, .email-section a:hover { color: var(--accent); background: rgba(237, 111, 92, 0.1); }
+    
+    .location { font-size: 1.1rem; display: flex; align-items: center; margin-bottom: 1.8rem; }
+    .email-section { font-size: 1.1rem; display: flex; align-items: center; margin-top: 1.8rem; } 
+
+    .icon { width: 20px; height: 20px; stroke: currentColor; fill: none; margin-right: 10px; }
+
+    /* ── SECCIÓN 2: PORTFOLIO ── */
+    .portfolio-section { background-color: var(--bg-dark); color: var(--color-dark); display: flex; min-height: 100vh; width: 100%; }
+    .image-side { width: 40%; height: 100vh; position: sticky; top: 0; overflow: hidden; }
+    .image-side img { position: absolute; width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: opacity 0.6s; }
+    .text-side { flex: 1; padding: 80px 60px; display: flex; align-items: center; }
+    .text-side p, .video-description p { font-size: clamp(1.4rem, 2.5vw, 1.8rem); line-height: 1.6; text-align: right; color: var(--color-muted-dark); }
+    .text-side span { cursor: pointer; color: var(--color-dark); font-weight: 500; border-bottom: 1px solid var(--accent); transition: all 0.2s; }
+    .text-side span:hover { color: var(--accent); background: rgba(237, 111, 92, 0.1); }
+
+    /* ── SECCIÓN 3: VÍDEOS (LIGHT THEME) ── */
+    .video-section {
+      background-color: var(--bg-light); /* Cambiado a Light */
+      color: var(--color-light); /* Cambiado a Dark text */
+      padding: 200px 0 120px 0;
+      position: relative;
+      width: 100%;
+    }
+    .video-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 5%;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 70%;
+      aspect-ratio: 16 / 9;
+      cursor: pointer;
+      overflow: hidden;
+      z-index: 1;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+      background: #000;
+    }
+
+    .video-thumbnail img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .video-thumbnail::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.1); transition: 0.3s; }
+
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 80px;
+      height: 80px;
+      transform: translate(-50%, -50%);
+      border: none;
+      background: rgba(255,255,255,0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .play-btn::before {
+      content: "";
+      border-left: 22px solid black;
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+      margin-left: 4px;
+    }
+
+    .video-wrapper iframe { width: 100%; height: 100%; border: none; }
+
+    .video-overlay-text {
+      position: absolute;
+      left: 20px;
+      top: -65px;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .video-overlay-text h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.1;
+      text-transform: lowercase;
+    }
+    .video-overlay-text h2.indent { padding-left: 60px; }
+    .video-overlay-text p { margin: 10px 0 0 20px; font-size: 1.1rem; color: var(--color-muted-light); }
+
+    /* Nueva descripción de vídeo */
+    .video-description {
+      position: absolute;
+      left: 20px;
+      top: 80px;
+      width: calc(25% - 20px);
+      z-index: 5;
+    }
+    .video-description p {
+      text-align: left; /* Alineado a la izquierda para el hueco lateral */
+      font-size: 1.1rem; /* Ajustado para que quepa en el lateral */
+      color: var(--color-muted-light);
+    }
+
+    .video-caption {
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      width: calc(25% - 20px);
+      z-index: 5;
+    }
+    .video-caption p { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.6; color: var(--color-muted-light); margin: 0; }
+
+    /* ── SECCIÓN 4: PIE (DARK THEME) ── */
+    footer.site-footer {
+      background-color: var(--bg-dark); /* Cambiado a Dark */
+      color: var(--color-dark); /* Cambiado a Light text */
+      padding: 60px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* ── RESPONSIVE MOBILE ── */
+    @media (max-width: 768px) {
+      .hero-section { justify-content: flex-start; padding-top: 15vh; }
+      h1 { flex-direction: column; gap: 0; }
+      .firstname, .surname, .lastname { margin-right: 0; width: 100%; }
+      .role { font-size: 1.8rem; margin-top: 0.1rem; } /* Ajuste fino para móvil */
+
+      .scroll-arrow { bottom: 80px; } /* Flecha más arriba en móvil */
+
+      .portfolio-section { flex-direction: column; }
+      .image-side { width: 100%; height: 50vh; position: relative; }
+      .text-side { padding: 40px 24px; }
+      .text-side p { text-align: left; }
+
+      .video-section { padding-top: 100px; }
+      .video-container { flex-direction: column; padding-right: 0; align-items: flex-start; }
+      .video-overlay-text { position: static; padding: 0 24px; margin-bottom: 30px; }
+      .video-overlay-text h2.indent { padding-left: 0; }
+      .video-wrapper { width: 100%; box-shadow: none; }
+      
+      /* Reubicación en móvil de la descripción y el pie */
+      .video-description { position: static; width: 100%; padding: 20px 24px 0; }
+      .video-description p { text-align: left; font-size: 1.1rem; }
+      
+      .video-caption { position: static; width: 100%; padding: 15px 24px 0; order: 2; } /* Debajo de descripción */
+      .video-description { order: 3; } /* El texto descripción debajo del pie en el flujo vertical de móvil */
+      .video-caption p { font-size: 0.55rem; line-height: 1; }
+
+      footer.site-footer { flex-direction: column; gap: 20px; text-align: center; }
+    }
+
+    .scroll-arrow { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; cursor: pointer; opacity: 0.5; color: var(--color-light); }
+    @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-10px) translateX(-50%); } 60% { transform: translateY(-5px) translateX(-50%); } }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero-section">
+    <main class="container-index">
+      <header>
+        <h1>
+          <span class="firstname">Daniel</span> 
+          <span class="surname">Sanmartín</span> 
+          <span class="lastname">Nieto<span class="dot">.</span></span>
+        </h1>
+        <p class="role">musician & musicologist</p>
+      </header>
+      <section class="skills">
+        <span class="skill-pair">organ harpsichord</span> 
+        <span class="skill-pair">research editing</span>
+      </section>
+      <section class="project">
+        <div><a href="https://orquestaclasica.com/es/proxectos/" target="_blank">co-founder 8pés organ festival</a></div>
+        <div><a href="https://www.dosacordes.es/web/" target="_blank">executive editor at dos acordes</a></div>
+      </section>
+      <section class="location">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-6-5.4-6-10a6 6 0 1 1 12 0c0 4.6-6 10-6 10z"></path><circle cx="12" cy="11" r="2"></circle></svg> Roma
+      </section>
+      <section class="email-section">
+        <a class="email" id="emailLink">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"></path><path d="M4 6l8 6 8-6"></path></svg>
+          <span id="emailText">loading...</span>
+        </a>
+      </section>
+    </main>
+    <div class="scroll-arrow" onclick="document.getElementById('portfolio').scrollIntoView();">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"></path></svg>
+    </div>
+  </section>
+
+  <section class="portfolio-section" id="portfolio">
+    <div class="image-side"><img id="imgBottom" src="img1.jpg"><img id="imgTop" src="img1.jpg"></div>
+    <div class="text-side">
+<p>Focused on three interconnected fields — harpsichord and early keyboards, organ, and musicological research — my work bridges historical performance and contemporary creation. At the <span data-img="harpsichord.jpg">harpsichord</span>, my practice centers on continuo accompaniment and ensemble conducting from the keyboard. On the <span data-img="organ.jpg">organ</span>, symphonic repertoire and orchestral transcriptions hold a special place in my practice. In musicology, my <span data-img="research.jpg">research</span> focuses on editorial work and the principles of musical notation. Passionate about multidisciplinary projects, my activity spans mainly Italy and Spain.</p>
+    </div>
+  </section>
+
+  <section class="video-section">
+    <div class="video-container">
+      <div class="video-overlay-text">
+        <h2 class="indent">super flumina: songs of life and nature</h2>
+        <p>visual concert for percussion, piano & organ</p>
+      </div>
+
+      <div class="video-description">
+        <p>This multisensory project for organ, piano, and percussion — with integrated lighting design — explores water as a symbol of life, drawing on Psalm 137, Gregorian chant, contemporary repertoire, and free improvisation.</p>
+      </div>
+
+      <div class="video-wrapper" data-video-id="zuQ-zG_jfo4">
+        <div class="video-thumbnail">
+          <img src="https://img.youtube.com/vi/zuQ-zG_jfo4/maxresdefault.jpg" alt="Super Flumina Video Thumbnail">
+          <button class="play-btn" aria-label="Play Video"></button>
+        </div>
+      </div>
+
+      <div class="video-caption">
+        <p>International Percussion<br>Festival of Almería (Spain),<br>August 9th 2025</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-left"><a href="https://www.instagram.com/atanasiominderlinten/" target="_blank" style="text-decoration:none; color:inherit; font-size:0.8rem; letter-spacing:0.1em;">INSTAGRAM</a></div>
+    <div class="footer-right" style="font-size:0.65rem; color:var(--color-muted-dark);">© 2026</div>
+  </footer>
+
+  <script>
+    const user = "daniel"; const domain = "sanmartin.bio"; const email = `${user}@${domain}`;
+    document.getElementById("emailLink").href = "mailto:" + email;
+    document.getElementById("emailText").textContent = email;
+
+    const items = document.querySelectorAll(".text-side span");
+    const imgTop = document.getElementById("imgTop");
+    const imgBottom = document.getElementById("imgBottom");
+    let current = "top";
+    items.forEach(item => {
+      item.addEventListener("mouseover", () => {
+        const newSrc = item.dataset.img; if (!newSrc) return;
+        if (current === "top") { imgBottom.src = newSrc; imgBottom.style.opacity = 1; imgTop.style.opacity = 0; current = "bottom"; }
+        else { imgTop.src = newSrc; imgTop.style.opacity = 1; imgBottom.style.opacity = 0; current = "top"; }
+      });
+    });
+
+    document.querySelector('.video-wrapper').addEventListener('click', function () {
+      const id = this.dataset.videoId;
+      this.innerHTML = `
+        <iframe
+          src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1"
+          allow="autoplay; encrypted-media"
+          allowfullscreen>
+        </iframe>
+      `;
+    });
+  </script>
+</body>
+</html>
