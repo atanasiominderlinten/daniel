@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Daniel Sanmartín Nieto | Musician & Musicologist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght=1,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-light: #E2E2E2;
+      --color-light: #1C1C1C;
+      --color-muted-light: #878787;
+      --bg-dark: #181818;
+      --color-dark: #E2E1E1;
+      --color-muted-dark: #878787;
+      --accent: #ED6F5C;
+    }
+
+    html, body { 
+      overflow-x: hidden; 
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: "Inter", sans-serif; }
+
+    /* ── SECCIÓN 1: PRESENTACIÓN ── */
+    .hero-section {
+      background-color: var(--bg-light);
+      color: var(--color-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
+      padding: 0 24px;
+      box-sizing: border-box;
+    }
+    .container-index { max-width: 850px; width: 100%; }
+
+    h1 { 
+      font-size: clamp(3.0rem, 6vw, 3.8rem); 
+      font-weight: 400; 
+      letter-spacing: -0.04em; 
+      margin: 0 0 0.2rem;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .firstname, .surname, .lastname { font-weight: 400; margin-right: 0.25em; }
+    .surname, .lastname { font-weight: 600; }
+    .lastname { margin-right: 0; }
+    .dot { color: var(--accent); }
+
+    .role { 
+      font-family: "Playfair Display", serif; 
+      font-style: italic; 
+      font-size: clamp(1.85rem, 3.2vw, 2.2rem); 
+      color: var(--color-muted-light); 
+      margin: 0 0 0.8rem; 
+    }
+
+    .skills { 
+      font-size: 1.25rem; 
+      margin-bottom: 2.2rem; 
+      letter-spacing: 0.07em; 
+      text-transform: lowercase;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 1.2em;
+    }
+    .skill-pair { white-space: nowrap; word-spacing: 1.2em; }
+    
+    .project { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 2rem; line-height: 1.2; }
+    .project a, .email-section a { 
+      text-decoration: none; 
+      border-bottom: 1px solid var(--accent); 
+      transition: all 0.2s; 
+      color: var(--color-muted-light);
+      display: inline;
+      width: fit-content;
+    }
+    .email-section a { color: var(--color-light); display: inline-flex; align-items: center; }
+    .project a:hover, .email-section a:hover { color: var(--accent); background: rgba(237, 111, 92, 0.1); }
+    
+    .location { font-size: 1.1rem; display: flex; align-items: center; margin-bottom: 1.8rem; }
+    .email-section { font-size: 1.1rem; display: flex; align-items: center; margin-top: 1.8rem; } 
+
+    .icon { width: 20px; height: 20px; stroke: currentColor; fill: none; margin-right: 10px; }
+
+    /* ── ARROW ── */
+    .scroll-arrow { 
+      position: absolute; 
+      bottom: 30px; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      animation: bounce 2s infinite; 
+      cursor: pointer; 
+      opacity: 0.5; 
+      color: var(--color-light); 
+    }
+
+    /* ── SECCIÓN 2: PORTFOLIO ── */
+    .portfolio-section { background-color: var(--bg-dark); color: var(--color-dark); display: flex; min-height: 100vh; width: 100%; }
+    .image-side { width: 40%; height: 100vh; position: sticky; top: 0; overflow: hidden; }
+    .image-side img { position: absolute; width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: opacity 0.6s; }
+    .text-side { flex: 1; padding: 80px 60px; display: flex; align-items: center; }
+    .text-side p { font-size: clamp(1.4rem, 2.5vw, 1.49rem); line-height: 1.6; text-align: right; color: var(--color-muted-dark); }
+    .text-side span { cursor: pointer; color: var(--color-dark); font-weight: 500; border-bottom: 1px solid var(--accent); transition: all 0.2s; }
+    .text-side span:hover { color: var(--accent); background: rgba(237, 111, 92, 0.1); }
+
+    /* ── SECCIÓN 3: GALERÍA MINIMALISTA (CORREGIDA) ── */
+    .video-section {
+      background-color: var(--bg-light);
+      color: var(--color-light);
+      padding: 120px 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .slider-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 5%;
+      box-sizing: border-box;
+    }
+    .slider-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    /* Estructura en Grid para que los elementos invisibles no generen altura en el DOM */
+    .projects-slider {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: auto;
+      width: 100%;
+    }
+    .video-container {
+      grid-column: 1;
+      grid-row: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      box-sizing: border-box;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+    }
+    .video-container.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .video-overlay-text {
+      width: 70%;
+      margin-bottom: 20px;
+    }
+    .video-overlay-text h2 {
+      margin: 0;
+      font-size: clamp(2.8rem, 4vw, 3.7rem);
+      font-weight: 600;
+      line-height: 1.1;
+      text-transform: lowercase;
+    }
+    .video-overlay-text h2.indent { padding-left: 60px; }
+    .video-overlay-text p { margin: 10px 0 0 20px; font-size: 1.1rem; }
+    .video-overlay-text r { margin: 10px 0 0 20px; line-height: 3; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;  color: var(--color-muted-light); }
+
+    /* Bloque adaptativo que alinea horizontalmente la descripción y el contenido en Desktop */
+    .main-content-row {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    /* Solución definitiva para que la descripción empuje la caja y no desborde */
+    .video-description {
+      width: calc(30% - 40px);
+      box-sizing: border-box;
+    }
+    .video-description p {
+      text-align: left;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      line-height: 1.6;
+      color: var(--color-muted-light);
+      margin: 0;
+    }
+
+    /* Bloque multimedia a la derecha */
+    .media-block {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .video-wrapper {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+      background: #000;
+      position: relative;
+    }
+    .video-wrapper.no-video { cursor: default; }
+
+    .video-thumbnail { width: 100%; height: 100%; }
+    .video-thumbnail img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    
+    .play-btn {
+      position: absolute;
+      top: 50%; left: 50%; width: 80px; height: 80px;
+      transform: translate(-50%, -50%); border: none;
+      background: rgba(255,255,255,0.95); display: flex;
+      align-items: center; justify-content: center; cursor: pointer;
+    }
+    .play-btn::before {
+      content: ""; border-left: 22px solid black; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 4px;
+    }
+
+    .video-wrapper iframe { width: 100%; height: 100%; border: none; }
+
+    .video-caption {
+      width: 100%;
+      margin-top: 0.8rem;
+      text-align: right;
+    }
+    .video-caption p { 
+      font-size: 0.58rem; 
+      letter-spacing: 0.08em; 
+      text-transform: uppercase; 
+      line-height: 1.3; 
+      color: var(--color-muted-light); 
+      margin: 0; 
+    }
+    .video-caption a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      transition: color 0.2s;
+    }
+    .video-caption a:hover {
+      color: var(--accent);
+    }
+
+    /* Controles de Navegación */
+    .slider-nav {
+      display: flex;
+      gap: 20px;
+      margin-top: 40px;
+      justify-content: flex-end;
+      width: 70%;
+      margin-left: auto;
+    }
+    .nav-btn {
+      background: none;
+      border: none;
+      color: var(--color-light);
+      cursor: pointer;
+      padding: 10px;
+      opacity: 0.5;
+      transition: opacity 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-btn:hover { opacity: 1; }
+    .nav-btn:active { transform: scale(0.95); }
+
+    /* ── SECCIÓN 4: PIE ── */
+    footer.site-footer {
+      background-color: var(--bg-dark);
+      color: var(--color-dark);
+      padding: 60px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* ── RESPONSIVE MOBILE ── */
+    @media (max-width: 768px) {
+      .hero-section { justify-content: flex-start; padding-top: 15vh; }
+      .scroll-arrow { bottom: 60px; } 
+
+      .portfolio-section { flex-direction: column; }
+      .image-side { width: 100%; height: 50vh; position: relative; }
+      .text-side { padding: 40px 24px 120px 24px; } 
+      .text-side p { text-align: left; }
+
+      .video-section { padding: 80px 0; }
+      .slider-container { padding: 0 24px; }
+      .video-container { align-items: flex-start; }
+      
+      .video-overlay-text { width: 100%; margin-bottom: 20px; }
+      .video-overlay-text h2.indent { padding-left: 0; }
+      
+      .main-content-row { flex-direction: column; gap: 0; }
+      .media-block { width: 100%; }
+      .video-caption { text-align: left; margin-top: 15px; }
+      
+      .video-description { 
+        width: 100%; 
+        padding-top: 30px; 
+      }
+      .video-description p { text-align: left; width: 100%; }
+
+      .slider-nav {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 30px;
+      }
+    }
+
+    @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-12px) translateX(-50%); } 60% { transform: translateY(-6px) translateX(-50%); } }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero-section">
+    <main class="container-index">
+      <header>
+        <h1>
+          <span class="firstname">Daniel</span> 
+          <span class="surname">Sanmartín</span> 
+          <span class="lastname">Nieto<span class="dot">.</span></span>
+        </h1>
+        <p class="role">musician & musicologist</p>
+      </header>
+      <section class="skills">
+        <span class="skill-pair">organ harpsichord</span> 
+        <span class="skill-pair">research editing</span>
+      </section>
+      <section class="project">
+        <div><a href="https://orquestaclasica.com/es/proxectos/" target="_blank">co-founder 8pés organ festival</a></div>
+        <div><a href="https://www.dosacordes.es/web/" target="_blank">executive editor at dos acordes</a></div>
+      </section>
+      <section class="location">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-6-5.4-6-10a6 6 0 1 1 12 0c0 4.6-6 10-6 10z"></path><circle cx="12" cy="11" r="2"></circle></svg> Roma
+      </section>
+      <section class="email-section">
+        <a class="email" id="emailLink">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"></path><path d="M4 6l8 6 8-6"></path></svg>
+          <span id="emailText">loading...</span>
+        </a>
+      </section>
+    </main>
+    <div class="scroll-arrow" onclick="document.getElementById('portfolio').scrollIntoView();">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"></path></svg>
+    </div>
+  </section>
+
+  <section class="portfolio-section" id="portfolio">
+    <div class="image-side"><img id="imgBottom" src="img1.jpg"><img id="imgTop" src="img1.jpg"></div>
+    <div class="text-side">
+      <p>My musical journey began in childhood with percussion and piano, before I turned toward <span data-img="research.jpg">musicology</span> — and it was through that path that I eventually found my way back to performance. I ended up studying <span data-img="harpsichord.jpg">harpsichord</span> and <span data-img="organ.jpg">organ</span> at the Conservatorio “Santa Cecilia” in Rome, graduating <i>cum laude</i> in both disciplines. Since then, my work has developed around three interconnected fields: historical keyboards, organ, and musicological research. As a harpsichordist, I focus on continuo accompaniment and directing from the keyboard. The organ holds a special place in my practice, with symphonic repertoire and orchestral transcriptions at its core. On the musicological side, I work on editorial projects and research into the hermeneutic principles of musical notation. My activity is mainly based in Italy and Spain, and I have a particular fondness for multidisciplinary projects.</p>
+    </div>
+  </section>
+
+  <section class="video-section">
+    <div class="slider-container">
+      <div class="slider-wrapper">
+        <div class="projects-slider">
+
+          <div class="video-container active">
+            <div class="video-overlay-text">
+              <h2 class="indent">super flumina: songs of life and nature</h2>
+              <p>visual concert for percussion, piano & organ</p>
+              <r>Organ, arrangements, lighting design & artistic production</r>
+            </div>
+            
+            <div class="main-content-row">
+              <div class="video-description">
+                <p>A visual concert drawing on <i>Psalm 137</i>, Gregorian chant, contemporary repertoire, and free improvisation, weaving together sacred resonances, soundscapes, and collective memory through water as a metaphor for life and spiritual longing — a project developed together with the percussionist Álvaro Jurado and the pianist Ana Senn.</p>
+              </div>
+              <div class="media-block">
+                <div class="video-wrapper" data-video-id="zuQ-zG_jfo4">
+                  <div class="video-thumbnail">
+                    <img src="https://img.youtube.com/vi/zuQ-zG_jfo4/maxresdefault.jpg" alt="Super Flumina Video Thumbnail">
+                    <button class="play-btn" aria-label="Play Video"></button>
+                  </div>
+                </div>
+                <div class="video-caption">
+                  <p>International Percussion<br>Festival of Almería (Spain),<br>August 6th 2025</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="video-container">
+            <div class="video-overlay-text">
+              <h2 class="indent">échos du trocadéro</h2>
+              <p>solo recital</p>
+              <r>organ</r>
+            </div>
+            
+            <div class="main-content-row">
+              <div class="video-description">
+                <p>A solo organ recital inspired by the musical world of the Palais du Trocadéro, the monumental concert hall built for the Paris Universal Exposition of 1878, where the modern symphonic organ emerged as both a sonic and cultural emblem of the Belle Époque. Through works by Charles-Marie Widor and César Franck — first performed on the legendary Cavaillé-Coll organ — alongside my own organ transcription from Giacomo Puccini’s Le Villi, the program explores the encounter between architecture, technology, spectacle, and musical imagination at the dawn of modernity.</p>
+              </div>
+              <div class="media-block">
+                <div class="video-wrapper no-video">
+                  <div class="video-thumbnail">
+                    <img src="trocadero.jpg" alt="Échos du Trocadéro">
+                  </div>
+                </div>
+                <div class="video-caption">
+                  <p>Rome,<br>24th may 2026</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="video-container">
+            <div class="video-overlay-text">
+              <h2 class="indent">un pastor de cetro y lira</h2>
+              <p>symphonies and dances from the court of Louis XV</p>
+              <r>harpsichord & conducting</r>
+            </div>
+            
+            <div class="main-content-row">
+              <div class="video-description">
+                <p>A concert project exploring the pastoral and ceremonial imagination of eighteenth-century France through orchestral suites and dances from the court of Louis XV. Moving between Arcadian landscapes and royal spectacle, the program traces how the language of dance became a shared space between theater, politics, and musical invention in the French late Baroque. Through works by Jean-Féry Rebel, Mademoiselle Duval, and Jean-Philippe Rameau, the project explores the coexistence of tradition and transformation within a repertoire where elegance, symbolism, and orchestral color converge.</p>
+              </div>
+              <div class="media-block">
+                <div class="video-wrapper no-video">
+                  <div class="video-thumbnail">
+                    <img src="pastor.jpg" alt="Un pastor de cetro y lira">
+                  </div>
+                </div>
+                <div class="video-caption">
+                  <p><a href="https://orquestaclasica.com/" target="_blank">Orquesta Clásica de Vigo</a><br>(Spain),<br>11th april 2026</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="video-container">
+            <div class="video-overlay-text">
+              <h2 class="indent">Aldo Clementi, a cent'anni dalla nascita</h2>
+              <p>exhibition</p>
+              <r>exhibition design</r>
+            </div>
+            
+            <div class="main-content-row">
+              <div class="video-description">
+                <p>A project dedicated to the exhibition design and graphic concept for <i>Aldo Clementi a cent’anni dalla nascita</i>, conceived for Nuova Consonanza at La Pelanda del Mattatoio di Roma, where the visual identity of the project unfolds as an interpretative layer alongside the commemorative and musicological dimension of the event. Drawing on archival materials, scores, documents, and traces of performance history, the installation constructs a visual narrative that reflects Clementi’s own compositional thought, in which memory, structure, and perception are constantly interwoven.</p>
+              </div>
+              <div class="media-block">
+                <div class="video-wrapper no-video">
+                  <div class="video-thumbnail">
+                    <img src="clementi.jpg" alt="Aldo Clementi Exhibition">
+                  </div>
+                </div>
+                <div class="video-caption">
+                  <p>Rome,<br>29th november-23rd december 2025</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="slider-nav">
+        <button class="nav-btn" id="prevBtn" aria-label="Previous project">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button class="nav-btn" id="nextBtn" aria-label="Next project">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-left"><a href="https://www.instagram.com/atanasiominderlinten/" target="_blank" style="text-decoration:none; color:inherit; font-size:0.8rem; letter-spacing:0.1em;">INSTAGRAM</a></div>
+    <div class="footer-right" style="font-size:0.65rem; color:var(--color-muted-light);">© 2026</div>
+  </footer>
+
+  <script>
+    const user = "daniel"; const domain = "sanmartin.bio"; const email = `${user}@${domain}`;
+    document.getElementById("emailLink").href = "mailto:" + email;
+    document.getElementById("emailText").textContent = email;
+
+    const items = document.querySelectorAll(".text-side span");
+    const imgTop = document.getElementById("imgTop");
+    const imgBottom = document.getElementById("imgBottom");
+    let current = "top";
+    items.forEach(item => {
+      item.addEventListener("mouseover", () => {
+        const newSrc = item.dataset.img; if (!newSrc) return;
+        if (current === "top") { imgBottom.src = newSrc; imgBottom.style.opacity = 1; imgTop.style.opacity = 0; current = "bottom"; }
+        else { imgTop.src = newSrc; imgTop.style.opacity = 1; imgBottom.style.opacity = 0; current = "top"; }
+      });
+    });
+
+    // Reproductor dinámico de YouTube (solo aplica a elementos con id de vídeo activo)
+    document.querySelectorAll('.video-wrapper').forEach(wrapper => {
+      wrapper.addEventListener('click', function () {
+        const id = this.dataset.videoId;
+        if (id) {
+          this.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+        }
+      });
+    });
+
+    // Lógica interna de navegación por desvanecimiento minimalista (CSS Grid Cell overlay)
+    const slides = document.querySelectorAll('.projects-slider .video-container');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      slides[currentIndex].classList.remove('active');
+      currentIndex = index;
+      slides[currentIndex].classList.add('active');
+    }
+
+    nextBtn.addEventListener('click', () => {
+      let nextIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+      showSlide(nextIndex);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      let prevIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+      showSlide(prevIndex);
+    });
+  </script>
+</body>
+</html>
