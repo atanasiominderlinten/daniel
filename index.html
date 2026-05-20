@@ -630,7 +630,7 @@
     }, { passive: true });
 
     function handleSwipe() {
-      const swipeThreshold = 100; 
+      const swipeThreshold = 60; 
       if (touchStartX - touchEndX > swipeThreshold) {
         // Deslizar hacia la izquierda -> Siguiente proyecto
         let nextIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
