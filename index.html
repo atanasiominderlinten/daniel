@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daniel Sanmartín Nieto | Musician & Musicologist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Daniel Sanmartín Nieto, musician and musicologist specializing in organ, harpsichord, historical research, and musical editing based in Rome.">
+  <meta name="keywords" content="Daniel Sanmartín Nieto, musician, musicologist, organist, harpsichordist, historical keyboards, organ festival, 8pés, Rome, Vigo, musical research">
+  <meta name="author" content="Daniel Sanmartín Nieto">
+  <link rel="canonical" href="https://sanmartin.bio/">
+
+  <meta property="og:title" content="Daniel Sanmartín Nieto | Musician & Musicologist">
+  <meta property="og:description" content="Musical projects, research, and performances of Daniel Sanmartín Nieto.">
+  <meta property="og:image" content="https://sanmartin.bio/trocadero.jpg"> <meta property="og:url" content="https://sanmartin.bio/">
+  <meta property="og:type" content="profile">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-light: #E2E2E2;
+      --color-light: #1C1C1C;
+      --color-muted-light: #878787;
+      --bg-dark: #181818;
+      --color-dark: #E2E1E1;
+      --color-muted-dark: #878787;
+      --accent: #ED6F5C;
+    }
+
+    html, body { 
+      overflow-x: hidden; 
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+
+    /* ── SECCIÓN 1: PRESENTACIÓN ── */
+    .hero-section {
+      background-color: var(--bg-light);
+      color: var(--color-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
+      padding: 0 24px;
+      box-sizing: border-box;
+    }
+    .container-index { max-width: 850px; width: 100%; }
+
+    h1 { 
+      font-size: clamp(3.0rem, 6vw, 3.8rem); 
+      font-weight: 400; 
+      letter-spacing: -0.04em; 
+      margin: 0 0 0.2rem;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .firstname, .surname, .lastname { font-weight: 400; margin-right: 0.25em; }
+    .surname, .lastname { font-weight: 600; }
+    .lastname { margin-right: 0; }
+    .dot { color: var(--accent); }
+
+    .role { 
+      font-family: 'Playfair Display', serif; 
+      font-style: italic; 
+      font-size: clamp(1.85rem, 3.2vw, 2.2rem); 
+      color: var(--color-muted-light); 
+      margin: 0 0 0.8rem; 
+    }
+
+    .skills { 
+      font-size: 1.25rem; 
+      margin-bottom: 2.2rem; 
+      letter-spacing: 0.07em; 
+      text-transform: lowercase;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 1.2em;
+    }
+    .skill-pair { white-space: nowrap; word-spacing: 1.2em; }
+    
+    .project { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 2rem; line-height: 1.2; }
+    .project a, .email-section a { 
+      text-decoration: none; 
+      border-bottom: 1px solid var(--accent); 
+      transition: all 0.2s; 
+      color: var(--color-muted-light);
+      display: inline;
+      width: fit-content;
+    }
+    .email-section a { color: var(--color-light); display: inline-flex; align-items: center; }
+    .project a:hover, .email-section a:hover { color: var(--accent); background: rgba(237, 111, 92, 0.1); }
+    
+    .location { font-size: 1.1rem; display: flex; align-items: center; margin-bottom: 1.8rem; }
+    .email-section { font-size: 1.1rem; display: flex; align-items: center; margin-top: 1.8rem; } 
+
+    .icon { width: 20px; height: 20px; stroke: currentColor; fill: none; margin-right: 10px; }
+
+    /* ── ARROW ── */
+    .scroll-arrow { 
+      position: absolute; 
+      bottom: 30px; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      animation: bounce 2s infinite; 
+      cursor: pointer; 
+      opacity: 0.5; 
+      color: var(--color-light); 
+    }
+
+    /* ── SECCIÓN 2: PORTFOLIO ── */
+    .portfolio-section { background-color: var(--bg-dark); color: var(--color-dark); display: flex; min-height: 100vh; width: 100%; }
+    .image-side { width: 40%; height: 100vh; position: sticky; top: 0; overflow: hidden; }
+    .image-side img { position: absolute; width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: opacity 0.6s; }
+    .text-side { flex: 1; padding: 80px 60px; display: flex; align-items: center; }
+    .text-side p { font-size: clamp(1.4rem, 2.5vw, 1.49rem); line-height: 1.6; text-align: right; color: var(--color-muted-dark); }
+    .text-side span { cursor: pointer; color: var(--color-dark); font-weight: 500; border-bottom: 1px solid var(--accent); transition: all 0.2s; }
+    .text-side span:hover { color: var(--accent); background: rgba(237, 111, 92, 0.1); }
+
+    /* ── SECCIÓN 3: REDES SOCIALES (ESTILO MINIMALISTA) ── */
+    .social-section {
+      background-color: var(--bg-light);
+      color: var(--color-light);
+      padding: 100px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 50vh;
+    }
+    
+    .social-container {
+      max-width: 850px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+    }
+
+    .social-container h3 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.6rem, 2.8vw, 2rem);
+      color: var(--color-muted-light);
+      margin: 0;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 60px; /* Mayor separación entre columnas de iconos en desktop */
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--color-light);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .social-link svg {
+      width: 25px;
+      height: 25px;
+      transition: transform 0.2s ease;
+    }
+
+    /* YouTube e Instagram usan SVG con relleno (fill) */
+    .social-link svg.svg-fill {
+      fill: currentColor;
+    }
+
+    /* El correo usa SVG de trazo (stroke) con esquinas y uniones redondeadas */
+    .social-link svg.svg-stroke {
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .social-link:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .social-link:hover svg {
+      transform: translateY(-2px);
+    }
+
+    /* ── SECCIÓN 4: PIE ── */
+    footer.site-footer {
+      background-color: var(--bg-dark);
+      color: var(--color-dark);
+      padding: 60px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* ── RESPONSIVE MOBILE ── */
+    @media (max-width: 768px) {
+      .hero-section { justify-content: flex-start; padding-top: 15vh; }
+      .scroll-arrow { bottom: 60px; } 
+
+      .portfolio-section { flex-direction: column; }
+      .image-side { width: 100%; height: 50vh; position: relative; }
+      .text-side { padding: 40px 24px 120px 24px; } 
+      .text-side p { text-align: left; }
+
+      .social-section { padding: 80px 24px; }
+      .social-links { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+
+    @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-12px) translateX(-50%); } 60% { transform: translateY(-6px) translateX(-50%); } }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero-section">
+    <main class="container-index">
+      <header>
+        <h1>
+          <span class="firstname">Daniel</span> 
+          <span class="surname">Sanmartín</span> 
+          <span class="lastname">Nieto<span class="dot">.</span></span>
+        </h1>
+        <p class="role">musician & musicologist</p>
+      </header>
+      <section class="skills">
+        <span class="skill-pair">organ harpsichord</span> 
+        <span class="skill-pair">research editing</span>
+      </section>
+      <section class="project">
+        <div><a href="https://8pes.org/" target="_blank">co-founder 8pés organ festival</a></div>
+        <div><a href="https://www.dosacordes.es/" target="_blank">executive editor at dos acordes</a></div>
+      </section>
+      <section class="location">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-6-5.4-6-10a6 6 0 1 1 12 0c0 4.6-6 10-6 10z"></path><circle cx="12" cy="11" r="2"></circle></svg> Roma
+      </section>
+      <section class="email-section">
+        <a class="email" id="emailLink">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"></path><path d="M4 6l8 6 8-6"></path></svg>
+          <span id="emailText">loading...</span>
+        </a>
+      </section>
+    </main>
+    <div class="scroll-arrow" onclick="document.getElementById('portfolio').scrollIntoView();">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"></path></svg>
+    </div>
+  </section>
+
+  <section class="portfolio-section" id="portfolio">
+    <div class="image-side"><img id="imgBottom" src="img1.jpg"><img id="imgTop" src="img1.jpg"></div>
+    <div class="text-side">
+      <p>My musical journey began in childhood with percussion and piano, before I turned toward <span data-img="research.jpg">musicology</span> — and it was through that path that I eventually found my way back to performance. I ended up studying <span data-img="harpsichord.jpg">harpsichord</span> and <span data-img="organ.jpg">organ</span> at the Conservatory “Santa Cecilia” in Rome, graduating <i>cum laude</i> in both disciplines. Since then, my work has developed around three interconnected fields: historical keyboards, organ, and musicological research. As a harpsichordist, I focus on continuo accompaniment and directing from the keyboard. The organ holds a special place in my practice, with symphonic repertoire and orchestral transcriptions at its core. On the musicological side, I work on editorial projects and research into the hermeneutic principles of musical notation. My activity is mainly based in Italy and Spain, and I have a particular fondness for multidisciplinary projects.</p>
+    </div>
+  </section>
+
+  <section class="social-section">
+    <div class="social-container">
+      <h3>connect</h3>
+      <div class="social-links">
+        <a href="https://www.youtube.com/@atanasiominderlinten" target="_blank" class="social-link" aria-label="YouTube Channel">
+          <svg class="svg-fill" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+        <a href="https://www.instagram.com/atanasiominderlinten/" target="_blank" class="social-link" aria-label="Instagram Profile">
+          <svg class="svg-fill" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="mailto:daniel@sanmartin.bio" class="social-link" aria-label="Send Email">
+          <svg class="svg-stroke" viewBox="0 0 24 24"><rect x="3" y="5" width="20" height="16" rx="3"></rect><path d="M3 7l9 6 9-6"></path></svg>
+          daniel@sanmartin.bio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-left"><a href="https://www.instagram.com/atanasiominderlinten/" target="_blank" style="text-decoration:none; color:inherit; font-size:0.8rem; letter-spacing:0.1em;"> </a></div>
+    <div class="footer-right" style="font-size:0.65rem; color:var(--color-muted-light);">© 2026</div>
+  </footer>
+
+  <script>
+    const user = "daniel"; const domain = "sanmartin.bio"; const email = `${user}@${domain}`;
+    document.getElementById("emailLink").href = "mailto:" + email;
+    document.getElementById("emailText").textContent = email;
+
+    const items = document.querySelectorAll(".text-side span");
+    const imgTop = document.getElementById("imgTop");
+    const imgBottom = document.getElementById("imgBottom");
+    let current = "top";
+    items.forEach(item => {
+      item.addEventListener("mouseover", () => {
+        const newSrc = item.dataset.img; if (!newSrc) return;
+        if (current === "top") { imgBottom.src = newSrc; imgBottom.style.opacity = 1; imgTop.style.opacity = 0; current = "bottom"; }
+        else { imgTop.src = newSrc; imgTop.style.opacity = 1; imgBottom.style.opacity = 0; current = "top"; }
+      });
+    });
+  </script>
+</body>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Daniel Sanmartín Nieto",
+  "jobTitle": "Musician & Musicologist",
+  "url": "https://sanmartin.bio",
+  "sameAs": [
+    "https://www.youtube.com/@atanasiominderlinten",
+    "https://www.instagram.com/atanasiominderlinten/"
+  ],
+  "email": "daniel@sanmartin.bio",
+  "knowsAbout": ["Musicology", "Organ", "Harpsichord", "Historical Keyboards", "Musical Editing", "Basso Continuo"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Rome",
+    "addressCountry": "IT"
+  }
+}
+</script>
+</html>
